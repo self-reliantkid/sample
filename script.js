@@ -1,6 +1,4 @@
-// ========================================
 // COUNTDOWN + WELCOME SCREEN
-// ========================================
 
 const countdownScreen = document.getElementById("countdownScreen");
 const welcomeScreen = document.getElementById("welcomeScreen");
@@ -19,12 +17,11 @@ function updateCountdown() {
     if (diff <= 0) {
 
         countdownScreen.style.display = "none";
-
         welcomeScreen.style.display = "flex";
 
         setTimeout(() => {
             welcomeScreen.style.opacity = "0";
-            welcomeScreen.style.pointerEvents = "none"; // ← add this line
+            welcomeScreen.style.pointerEvents = "none";
             setTimeout(() => {
                 welcomeScreen.style.display = "none";
                 mainContent.style.display = "block";
@@ -37,20 +34,14 @@ function updateCountdown() {
 
     // TIME CALCULATIONS
     const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-
     const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-
     const minutes = Math.floor((diff / (1000 * 60)) % 60);
-
     const seconds = Math.floor((diff / 1000) % 60);
 
     // DISPLAY VALUES
     document.getElementById("days").textContent = days;
-
     document.getElementById("hours").textContent = hours;
-
     document.getElementById("minutes").textContent = minutes;
-
     document.getElementById("seconds").textContent = seconds;
 
 }
@@ -61,14 +52,11 @@ setInterval(updateCountdown, 1000);
 updateCountdown();
 
 
-
-// ========================================
 // AUDIO MANAGEMENT
-// ========================================
+
 
 // GET ALL AUDIO ELEMENTS
 const allSongs = document.querySelectorAll("audio");
-
 // SLIDESHOW MUSIC
 const slideshowMusic = document.getElementById("slideshowMusic");
 
@@ -76,40 +64,28 @@ const slideshowMusic = document.getElementById("slideshowMusic");
 function stopAllAudio() {
 
     allSongs.forEach(song => {
-
         song.pause();
-
         song.currentTime = 0;
-
     });
 
 }
 
 // PLAY MUSIC TAB SONG
 function playSong(id) {
-
     stopAllAudio();
-
     const selectedSong = document.getElementById(id);
-
     selectedSong.play();
 
 }
 
 // PAUSE MUSIC TAB SONG
 function pauseSong(id) {
-
     const selectedSong = document.getElementById(id);
-
     selectedSong.pause();
-
 }
 
 
-
-// ========================================
 // SLIDESHOW
-// ========================================
 
 const slideshowImages = [
 
@@ -118,12 +94,11 @@ const slideshowImages = [
     "assets/img/photo3.jpeg",
     "assets/img/photo4.jpeg",
     "assets/img/photo5.jpeg",
-    "assets/img/photo6.jpeg"
-
+    "assets/img/photo6.jpeg",
+    "assets/img/photo7.jpeg"
 ];
 
 let currentSlide = 0;
-
 const slideshowImage = document.getElementById("slideshow-image");
 
 function startSlideshow() {
@@ -132,7 +107,6 @@ function startSlideshow() {
 
         // FADE OUT
         slideshowImage.style.opacity = 0;
-
         setTimeout(() => {
 
             // NEXT IMAGE
@@ -159,24 +133,18 @@ function startSlideshow() {
 startSlideshow();
 
 
-
-// ========================================
 // MAIN WEBSITE INTERACTIONS
-// ========================================
 
 document.addEventListener('DOMContentLoaded', function() {
 
     // TABS
     const tabs = document.querySelectorAll('.tab');
-
     const tabContents = document.querySelectorAll('.tab-content');
-
 
     // TAB SWITCHING
     tabs.forEach(tab => {
 
         tab.addEventListener('click', function() {
-
             const targetTab = this.getAttribute('data-tab');
 
             // STOP ALL AUDIO
@@ -184,7 +152,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
             // REMOVE ACTIVE STATES
             tabs.forEach(t => t.classList.remove('active'));
-
             tabContents.forEach(content => {
 
                 content.classList.remove('active');
@@ -212,13 +179,10 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
 
-    // LOVE LETTER EXPAND
+    // LETTER EXPAND
     const loveLetter = document.getElementById('loveLetter');
-
     loveLetter.addEventListener('click', function() {
-
         this.classList.toggle('expanded');
-
     });
 
 });
